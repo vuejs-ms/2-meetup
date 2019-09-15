@@ -1,18 +1,22 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
-  </div>
+  <v-row>
+    <v-col cols="4" v-for="(prod, index) in produtos" :key="index">
+      <produto :produto="prod" />
+    </v-col>
+  </v-row>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
+import ProdutoComponent from "@/components/Produto";
 
 export default {
-  name: "home",
   components: {
-    HelloWorld
+    produto: ProdutoComponent
+  },
+  computed: {
+    produtos() {
+      return this.$store.state.produtos;
+    }
   }
 };
 </script>
